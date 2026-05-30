@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ACADEMIA OMEGA 3 — Programas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,900&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#050507;
+  --carbon:#0a0a0c;
+  --steel:#111115;
+  --iron:#1a1a20;
+  --red:#e8001d;
+  --red2:#ff1533;
+  --orange:#ff4d00;
+  --silver:#8a8a96;
+  --light:#c8c8d4;
+  --white:#f0f0f8;
+  --grad-fire:linear-gradient(135deg,var(--red) 0%,var(--orange) 100%);
+  --grad-dark:linear-gradient(180deg, var(--black) 0%, var(--carbon) 100%);
+  --grad-glow:radial-gradient(circle at center, rgba(232,0,29,0.1) 0%, transparent 70%);
+  --section-pad: clamp(2rem, 6vw, 5rem);
+  --container-pad: clamp(1rem, 3vw, 3rem);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size: 16px;}
+body{
+  background:var(--black);color:var(--white);
+  font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;
+  line-height: 1.5;
+}
+#cur{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(232,0,29,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.12;}
+
+/* ── PERFORMANCE OPTIMIZATION ── */
+section, footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}
+.page-hero {
+  content-visibility: visible;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,5,7,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(232,0,29,.15);
+  padding:1rem var(--container-pad);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.15em;color:var(--white);text-decoration:none;position:relative;}
+.nav-logo::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:2px;background:var(--grad-fire);}
+
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--silver);text-decoration:none;
+  transition:color .3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;
+  bottom:-4px;left:0;width:0;height:1px;
+  background:var(--red);transition:width .3s;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+
+/* ── HAMBURGER MENU ── */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  background:none;
+  border:none;
+  cursor:none;
+  z-index:110;
+  padding:10px;
+}
+.menu-toggle span{
+  display:block;
+  width:28px;
+  height:2px;
+  background:var(--white);
+  transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1){ transform: translateY(8px) rotate(45deg); background: var(--red); }
+.menu-toggle.active span:nth-child(2){ opacity:0; transform: translateX(10px); }
+.menu-toggle.active span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); background: var(--red); }
+
+.breadcrumb{display:flex;align-items:center;gap:.8rem;font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;}
+.breadcrumb a{color:var(--silver);text-decoration:none;transition:color .3s;}
+.breadcrumb a:hover{color:var(--white);}
+.breadcrumb span{color:rgba(232,0,29,.5);}
+.breadcrumb strong{color:var(--red);}
+.nav-cta{padding:.6rem 1.8rem;background:var(--grad-fire);font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--white);border:none;cursor:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:opacity .3s;}
+.nav-cta:hover{opacity:.8;}
+
+/* ── FLOATING INSTAGRAM ── */
+.fab-instagram {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 999;
+  box-shadow: 0 10px 25px rgba(214, 36, 159, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.fab-instagram:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(214, 36, 159, 0.5);
+}
+.fab-instagram svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+@media (max-width: 768px) {
+  .fab-instagram { bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 14px; }
+  .fab-instagram svg { width: 26px; height: 26px; }
+}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  padding:5rem var(--container-pad) 4rem;
+  position:relative;overflow:hidden;
+  background:var(--carbon);
+  border-bottom:1px solid rgba(232,0,29,.12);
+}
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px) brightness(0.25);
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--carbon) 100%);
+  z-index: 2;
+}
+
+/* Section Background Videos */
+.section-with-bg {
+  position: relative;
+  overflow: hidden;
+}
+.section-bg-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.section-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(15px) brightness(0.2);
+  opacity: 0.6;
+}
+.section-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--black) 0%, transparent 15%, transparent 85%, var(--black) 100%);
+  z-index: 1;
+}
+.section-with-bg > *:not(.section-bg-video-container) {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(232,0,29,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,0,29,.04) 1px,transparent 1px);
+  background-size:50px 50px;animation:gridScroll 25s linear infinite;
+  z-index: 3;
+}
+@keyframes gridScroll{from{background-position:0 0}to{background-position:50px 50px}}
+.page-hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 70% 50%,transparent 20%,var(--carbon) 75%);}
+.page-hero-inner{position:relative;z-index:10;max-width:700px;}
+.ph-tag{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;}
+.ph-tag::before{content:'';width:30px;height:1px;background:var(--red);}
+.ph-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9vw,9rem);line-height:.88;margin-bottom:1.5rem;}
+.ph-title em{font-style:normal;-webkit-text-stroke:1px rgba(240,240,248,.2);color:transparent;}
+.ph-sub{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.1rem, 2.5vw, 1.8rem);
+  color:var(--white);
+  letter-spacing:.05em;
+  line-height:1.2;
+  max-width:600px;
+  text-transform: uppercase;
+  border-left: 3px solid var(--red);
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+.ph-sub span{
+  color: var(--red);
+}
+
+/* count chips */
+.ph-chips{display:flex;gap:1px;margin-top:2.5rem;}
+.chip{padding:.6rem 1.5rem;background:var(--steel);font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);border-left:2px solid transparent;transition:all .3s;cursor:none;}
+.chip.active,.chip:hover{background:var(--iron);border-left-color:var(--red);color:var(--white);}
+.chip strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);line-height:1;}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  padding:1.5rem var(--container-pad);
+  background:var(--steel);
+  border-bottom:1px solid rgba(232,0,29,.1);
+  display:flex;align-items:center;gap:1px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.filter-bar::-webkit-scrollbar{display:none;}
+.filter-btn{
+  padding:.55rem 1.4rem;
+  background:transparent;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--silver);border:none;cursor:none;
+  white-space:nowrap;transition:all .3s;
+  position:relative;
+}
+.filter-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--red);transform:scaleX(0);transition:transform .3s;}
+.filter-btn.active,.filter-btn:hover{color:var(--white);}
+.filter-btn.active::after,.filter-btn:hover::after{transform:scaleX(1);}
+
+/* ── SECTION LABEL ── */
+.sec-label{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:.8rem;}
+.sec-label::before, .sec-label::after{content:'';width:25px;height:1px;background:var(--red);}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);line-height:.9;margin-bottom:1rem;text-align:center;}
+.sec-title em{font-style:normal;-webkit-text-stroke:1px rgba(240,240,248,.2);color:transparent;}
+
+/* ── CATEGORY BLOCK ── */
+.cat-block{
+  padding:1.5rem var(--container-pad) 2.5rem;
+  position:relative;
+  background: var(--grad-dark);
+}
+.cat-block::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--grad-glow); opacity: 0.2; pointer-events: none;
+}
+.cat-block:nth-child(even){
+  background: radial-gradient(circle at 80% 50%, var(--carbon) 0%, var(--black) 100%);
+}
+.cat-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 90% 50%,rgba(232,0,29,.05) 0%,transparent 70%);pointer-events:none;}
+
+/* ── HERO CARD (1 big + grid) ── */
+.hero-card-layout{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr));gap:1px;margin-bottom:1px;justify-content:center;}
+.sub-card-layout{display:grid;gap:1px;justify-content:center;}
+.sub-card-layout.cols2{grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr));justify-content:center;}
+.sub-card-layout.cols3{grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr));justify-content:center;}
+
+/* ── PROGRAM CARD ── */
+.prog-card{
+  position:relative;overflow:hidden;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding:clamp(1.2rem, 2.5vw, 2rem);
+  display:flex;flex-direction:column;
+  transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:none;
+  min-height:240px;
+}
+.prog-card:hover {
+  background: rgba(232, 0, 29, 0.05);
+  border-color: rgba(232, 0, 29, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+.prog-card.big{min-height:360px;padding:2.5rem;}
+.prog-card:hover{background:var(--iron);}
+
+/* fire accent top */
+.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-fire);transform:scaleX(0);transform-origin:left;transition:transform .5s ease;}
+.prog-card:hover::before{transform:scaleX(1);}
+
+/* side number */
+.prog-num{
+  position:absolute;top:2rem;right:2rem;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:6rem;line-height:1;
+  color:rgba(255,255,255,.03);
+  pointer-events:none;transition:color .4s;
+  letter-spacing:.02em;
+}
+.prog-card:hover .prog-num{color:rgba(232,0,29,.06);}
+
+.prog-icon-wrap{
+  width:60px;height:60px;
+  background:rgba(232,0,29,.08);
+  border:1px solid rgba(232,0,29,.2);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.5rem;
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition:background .3s,transform .3s;
+  overflow:hidden;
+}
+.prog-icon-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.prog-card:hover .prog-icon-wrap{background:rgba(232,0,29,.15);transform:scale(1.05);}
+.prog-card.big .prog-icon-wrap{width:80px;height:80px;}
+
+.prog-tag-line{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;
+}
+.ptag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(232,0,29,.3);color:var(--red);
+  padding:.25rem .7rem;
+}
+.ptag.fire{background:var(--grad-fire);border:none;color:var(--white);}
+
+.prog-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:.04em;
+  line-height:.95;margin-bottom:.8rem;
+  transition:color .3s;
+}
+.prog-card.big .prog-name{font-size:2.5rem;}
+.prog-card:hover .prog-name{color:var(--red2);}
+
+.prog-desc{
+  font-size:.85rem;color:var(--silver);
+  line-height:1.7;font-weight:300;flex:1;
+  margin-bottom:1rem;
+}
+
+.prog-meta-row{
+  display:flex;gap:2rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding-top:1rem;margin-top:auto;
+}
+.prog-meta-item{font-family:'Barlow Condensed',sans-serif;}
+.prog-meta-item .mi-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);}
+.prog-meta-item .mi-val{font-size:.95rem;color:var(--light);margin-top:.15rem;}
+
+.prog-arrow{
+  position:absolute;bottom:2rem;right:2rem;
+  width:36px;height:36px;
+  border:1px solid rgba(232,0,29,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;color:var(--red);
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .3s,transform .3s;
+}
+.prog-card:hover .prog-arrow{opacity:1;transform:translateX(0);}
+
+/* ── INTENSITY BAR ── */
+.intensity{
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;
+}
+.int-label{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);}
+.int-bars{display:flex;gap:3px;}
+.int-bar{width:18px;height:6px;background:var(--steel);}
+.int-bar.on{background:var(--grad-fire);}
+.int-bar.half{background:rgba(232,0,29,.3);}
+
+/* ── SPORTS SECTION ── */
+.sports-grid{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap:1px;
+  justify-content:center;
+}
+.sport-card{
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  padding:clamp(1.5rem, 4vw, 2rem);text-align:center;
+  position:relative;overflow:hidden;
+  transition:all .3s ease;
+  cursor:none;
+}
+.sport-card:hover{
+  background: rgba(232, 0, 29, 0.05);
+  border-color: rgba(232, 0, 29, 0.3);
+  transform:translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.sport-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad-fire);transform:scaleX(0);transform-origin:center;transition:transform .4s;}
+.sport-card:hover::after{transform:scaleX(1);}
+.sport-icon{
+  width:80px;height:80px;
+  display:block;margin:0 auto 1rem;
+  filter:drop-shadow(0 8px 20px rgba(232,0,29,.2));
+  transition:transform .3s;
+  overflow:hidden;
+  border-radius:12px;
+}
+.sport-icon img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.sport-card:hover .sport-icon{transform:scale(1.15) rotate(-5deg);}
+.sport-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.05em;margin-bottom:.4rem;}
+.sport-sub{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);}
+.sport-sessions{
+  display:inline-block;margin-top:.8rem;
+  font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.15em;
+  border:1px solid rgba(232,0,29,.25);color:var(--red);padding:.2rem .6rem;
+}
+
+/* ── RECOVERY SECTION ── */
+.recovery-layout{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap:1px;
+  justify-content:center;
+}
+.recovery-card{
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding:clamp(1.5rem, 4vw, 3rem);
+  position:relative;overflow:hidden;cursor:none;
+  transition:all .4s ease;
+}
+.recovery-card:hover{
+  background: rgba(232, 0, 29, 0.05);
+  border-color: rgba(232, 0, 29, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.rc-glow{
+  position:absolute;top:-40px;right:-40px;
+  width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,0,29,.1) 0%,transparent 70%);
+  opacity:0;transition:opacity .4s;
+}
+.recovery-card:hover .rc-glow{opacity:1;}
+.rc-num{font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;color:rgba(232,0,29,.08);margin-bottom:.5rem;}
+.rc-icon{
+  width:60px;height:60px;
+  display:block;margin-bottom:1rem;
+  overflow:hidden;
+  border-radius:8px;
+  background:rgba(232,0,29,.1);
+}
+.rc-icon img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.rc-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;margin-bottom:.8rem;transition:color .3s;}
+.recovery-card:hover .rc-name{color:var(--red2);}
+.rc-desc{font-size:.82rem;color:var(--silver);line-height:1.7;font-weight:300;}
+.rc-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.rc-tag{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);border:1px solid rgba(255,255,255,.08);padding:.2rem .6rem;}
+
+/* ── COMPARISON TABLE ── */
+.compare-wrap{
+  overflow-x:auto;margin-top:3rem;
+  scrollbar-width:thin;scrollbar-color:var(--red) var(--steel);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+.compare-table{width:100%;border-collapse:collapse;min-width:800px;}
+.compare-table th{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;
+  padding:1.2rem 1.5rem;text-align:left;
+  background: rgba(255,255,255,0.02);color:var(--silver);
+  border-bottom:1px solid rgba(232,0,29,.2);
+}
+.compare-table th.highlight{color:var(--red);}
+.compare-table td{
+  padding:.9rem 1.5rem;font-size:.85rem;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  color:var(--light);font-weight:300;
+  transition:background .2s;
+}
+.compare-table tr:hover td{background:rgba(232,0,29,.03);}
+.compare-table td:first-child{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;color:var(--white);}
+.check-cell{color:var(--red);font-size:1rem;}
+.cross-cell{color:rgba(255,255,255,.15);font-size:.9rem;}
+.level-pill{
+  display:inline-block;padding:.2rem .7rem;
+  font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+}
+.lv-begin{border:1px solid rgba(100,200,100,.3);color:#64c864;}
+.lv-inter{border:1px solid rgba(232,150,0,.3);color:#e89600;}
+.lv-adv{border:1px solid rgba(232,0,29,.4);color:var(--red);}
+.lv-elite{background:var(--grad-fire);color:var(--white);}
+
+/* ── CTA BAND ── */
+.cta-band{
+  padding:var(--section-pad) var(--container-pad);text-align:center;
+  background: radial-gradient(circle at center, var(--carbon) 0%, var(--black) 100%);
+  position:relative;overflow:hidden;
+  border-top:1px solid rgba(232,0,29,.15);
+}
+.cta-band-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(232,0,29,.08) 0%,transparent 70%);}
+.cta-band h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,7rem);line-height:.9;position:relative;z-index:1;margin-bottom:1.5rem;}
+.cta-band h2 .outline{-webkit-text-stroke:1px rgba(240,240,248,.2);color:transparent;}
+.cta-band p{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:.12em;color:var(--silver);margin-bottom:2.5rem;position:relative;z-index:1;}
+.btn-fire{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1rem 2.8rem;background:var(--grad-fire);
+  font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  position:relative;z-index:1;transition:opacity .3s;cursor:none;
+}
+.btn-fire:hover{opacity:.85;}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.r1{transition-delay:.08s}.r2{transition-delay:.16s}.r3{transition-delay:.24s}.r4{transition-delay:.32s}.r5{transition-delay:.4s}.r6{transition-delay:.48s}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--red);padding:.6rem 0;overflow:hidden;}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 20s linear infinite;}
+.m-item{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.3em;color:rgba(240,240,248,.7);padding:0 2rem;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){
+  :root{
+    --section-pad: 3rem;
+  }
+}
+@media(max-width:1024px){
+  .hero-card-layout{grid-template-columns:1fr;}
+  .sports-grid{grid-template-columns:repeat(3,1fr);}
+  .recovery-layout{grid-template-columns:1fr 1fr;}
+  .sub-card-layout.cols3, .sub-card-layout.cols2{
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+@media(max-width:992px){
+  .menu-toggle{ display:flex; }
+  .nav-links{
+    position:fixed;
+    top:0;right:0;
+    width:100%;height:100vh;
+    background:var(--black);
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2.5rem;
+    transform:translateX(100%);
+    transition:transform .5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index:105;
+    padding:2rem;
+  }
+  .nav-links.active{ transform:translateX(0); }
+  .nav-links a{ font-size:1.5rem; }
+  .nav-cta{ display:none; }
+  .breadcrumb{ display:none; }
+}
+@media(max-width:768px){
+  .sports-grid{grid-template-columns:repeat(2,1fr);}
+  .recovery-layout{grid-template-columns:1fr;}
+  .ph-chips{flex-direction: column; gap: 1rem;}
+  .chip{border-left: none; border-bottom: 2px solid transparent;}
+  .chip.active, .chip:hover{border-left-color: transparent; border-bottom-color: var(--red);}
+}
+@media(max-width:480px){
+  .sports-grid{grid-template-columns:1fr;}
+  .compare-wrap{margin-top: 1.5rem;}
+  .prog-card{min-height: auto;}
+  .prog-card.big{min-height: auto; padding: 2rem;}
+}
+
+/* ── FOOTER ── */
+footer{
+  background: radial-gradient(circle at top, var(--carbon) 0%, var(--black) 100%);
+  padding:4rem var(--container-pad) 2rem;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.5fr repeat(3,1fr);
+  gap:4rem;
+  margin-bottom:4rem;
+}
+.footer-brand .logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:.15em;
+  margin-bottom:1.5rem;display:block;
+}
+.footer-brand p{
+  font-size:.85rem;color:var(--silver);
+  line-height:1.7;font-weight:300;
+  max-width:280px;
+}
+.footer-col h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.footer-col ul a{
+  font-size:.85rem;color:var(--silver);
+  text-decoration:none;transition:color .3s;
+}
+.footer-col ul a:hover{color:var(--white);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);
+}
+.footer-bottom p{font-size:.7rem;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.social-links{display:flex;gap:1rem;}
+.social-link{
+  width:36px;height:36px;
+  border:1px solid rgba(232,0,29,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;text-decoration:none;
+  transition:background .3s,border-color .3s;
+}
+.social-link:hover{background:rgba(232,0,29,.1);border-color:var(--red);}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/#academia" class="nav-logo">ACADEMIA OMEGA 3</a>
+  
+  <button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/#academia">Academia</a></li>
+    <li><a href="/programs.html">Programas</a></li>
+    <li><a href="/#treinadores">Treinadores</a></li>
+    <li><a href="/#estrutura">Estrutura</a></li>
+    <li><a href="/#agenda">Agenda</a></li>
+    <li><a href="/#planos">Planos</a></li>
+  </ul>
+
+  <div class="breadcrumb">
+    <a href="/#academia">Academia</a>
+    <span>/</span>
+    <a href="/programs.html">Programas</a>
+    <span>/</span>
+    <strong>Catálogo</strong>
+  </div>
+  <button class="nav-cta" onclick="window.location.href='/#planos'">Comece Agora</button>
+</nav>
+
+  <!-- INSTAGRAM FAB -->
+  <a href="https://www.instagram.com/academiaomega3" class="fab-instagram" target="_blank" aria-label="Seguir no Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+
+  <!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-video-container">
+    <video class="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1920&auto=format&fit=crop">
+      <source src="https://cdn.pixabay.com/video/2016/03/21/2513-159518063_large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-inner">
+    <div class="ph-tag">Catálogo Completo</div>
+    <h1 class="ph-title">TODOS OS<br><em>PROGRAMAS</em></h1>
+    <p class="ph-sub">Do iniciante ao <span>atleta de elite</span> — cada programa foi desenvolvido com <span>metodologia científica</span> para maximizar seus resultados.</p>
+    <div class="ph-chips">
+      <div class="chip active"><strong>32</strong>Programas</div>
+      <div class="chip"><strong>8</strong>Categorias</div>
+      <div class="chip"><strong>87</strong>Coaches</div>
+      <div class="chip"><strong>24/7</strong>Acesso</div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active">Todos os Programas</button>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap"><div class="marquee-track" id="mtrack"></div></div>
+ 
+<!-- ════════════════════════════════════ -->
+<!-- SEÇÃO — HORÁRIOS                   -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block section-with-bg" id="horarios">
+  <div class="section-bg-video-container">
+    <video class="section-bg-video" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2021/04/12/70860-536965158_large.mp4" type="video/mp4">
+    </video>
+    <div class="section-bg-overlay"></div>
+  </div>
+  <div class="sec-label reveal">00 — Horários</div>
+  <h2 class="sec-title reveal">CRONOGRAMA<br><em>SEMANAL</em></h2>
+
+  <div class="sub-card-layout cols3">
+    <div class="prog-card reveal r1">
+      <div class="prog-num">S</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&h=400&auto=format&fit=crop" alt="Gym">
+      </div>
+      <div class="prog-name">Segunda</div>
+      <p class="prog-desc">09:00 — ABS<br/>18:00 — ABS<br/>19:00 — ABS<br/>19:00 — Ritmos<br/>20:00 — ABS</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Local</div><div class="mi-val">Sala A / Sala B</div></div>
+      </div>
+    </div>
+
+    <div class="prog-card reveal r2">
+      <div class="prog-num">T</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&h=400&auto=format&fit=crop" alt="Gym">
+      </div>
+      <div class="prog-name">Terça</div>
+      <p class="prog-desc">18:15 — HIIT Funcional<br/>19:00 — Gap<br/>19:00 — Muay Thay</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">45 - 75 min</div></div>
+      </div>
+    </div>
+
+    <div class="prog-card reveal r3">
+      <div class="prog-num">Q</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=400&h=400&auto=format&fit=crop" alt="Gym">
+      </div>
+      <div class="prog-name">Quarta</div>
+      <p class="prog-desc">19:00 — Ritmos</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Obs</div><div class="mi-val">A confirmar rotina semanal</div></div>
+      </div>
+    </div>
+
+    <div class="prog-card reveal r4">
+      <div class="prog-num">Q</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=400&h=400&auto=format&fit=crop" alt="Gym">
+      </div>
+      <div class="prog-name">Quinta</div>
+      <p class="prog-desc">18:15 — HIIT Funcional<br/>19:00 — Gap<br/>19:00 — Muay Thay</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Vagas</div><div class="mi-val">Limitadas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 2 — CARDIO & HIIT             -->
+<!-- ════════════════════════════════════ -->
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 2 — CARDIO & HIIT             -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block" id="cardio">
+  <div class="sec-label reveal">02 — Cardio & HIIT</div>
+  <h2 class="sec-title reveal">ZONA<br><em>DE QUEIMA</em></h2>
+
+  <div class="sub-card-layout cols3">
+    <div class="prog-card big reveal r1">
+      <div class="prog-num">06</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&h=400&auto=format&fit=crop" alt="HIIT">
+      </div>
+      <div class="prog-tag-line"><span class="ptag fire">Hot</span><span class="ptag">Todos os níveis</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div></div></div>
+      <div class="prog-name">HIIT Extremo</div>
+      <p class="prog-desc">45 minutos de alta intensidade com protocolos de intervalo otimizados. Queima calórica máxima com efeito EPOC prolongado — seu metabolismo trabalha por horas depois da aula.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">45 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">Diária</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Calorias</div><div class="mi-val">~700 kcal</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r2">
+      <div class="prog-num">07</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&h=400&auto=format&fit=crop" alt="Cycling">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Indoor Cycling</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+      <div class="prog-name">Pedal Indoor Pro</div>
+      <p class="prog-desc">Pedaladas com ritmo, música e energia. Bike indoor com monitores cardíacos e power meters para performance real.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">50 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">5× / sem</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r3">
+      <div class="prog-num">08</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=400&h=400&auto=format&fit=crop" alt="Running">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Running</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Pista & Esteira</div>
+      <p class="prog-desc">Treinos de corrida com análise de passada, cadência e pace. Do 5k ao maratona — periodização específica para cada objetivo.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">60 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">4× / sem</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r1">
+      <div class="prog-num">09</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=400&h=400&auto=format&fit=crop" alt="Circuit">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Circuit</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Circuito Cardio</div>
+      <p class="prog-desc">Estações de cardio em circuito com mini-pesos. Diversão, variedade e resultados garantidos em 30 minutos.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">30 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">Diária</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r2">
+      <div class="prog-num">10</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=400&h=400&auto=format&fit=crop" alt="Dance">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Dança & Cardio</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div><div class="int-bar"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Dança Fitness</div>
+      <p class="prog-desc">Zumba, funk e ritmos latinos em um cardio que não parece treino. Ideal para quem ama dançar e queimar calorias.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">55 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r3">
+      <div class="prog-num">11</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&h=400&auto=format&fit=crop" alt="Stair">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Endurance</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+      <div class="prog-name">Escada Elite</div>
+      <p class="prog-desc">O cardio que mais ativa glúteos e posterior. Protocolos progressivos na escada para resistência de verdade.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">40 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">4× / sem</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 3 — ESPORTES DE LUTA          -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block section-with-bg" id="lutas">
+  <div class="section-bg-video-container">
+    <video class="section-bg-video" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2016/03/21/2513-159518063_large.mp4" type="video/mp4">
+    </video>
+    <div class="section-bg-overlay"></div>
+  </div>
+  <div class="sec-label reveal">03 — Esportes de Luta</div>
+  <h2 class="sec-title reveal">ZONA<br><em>DE COMBATE</em></h2>
+
+  <div class="hero-card-layout">
+    <div class="prog-card big reveal r1">
+      <div class="prog-num">12</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1552072805-2a9039d00e57?q=80&w=400&h=400&auto=format&fit=crop" alt="MMA">
+      </div>
+      <div class="prog-tag-line"><span class="ptag fire">Elite</span><span class="ptag">MMA</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div></div></div>
+      <div class="prog-name">MMA Completo</div>
+      <p class="prog-desc">O programa mais abrangente de artes marciais mistas. Striking, grappling, wrestling e condicionamento específico fundidos em um único sistema de treino para quem quer ser um atleta completo.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">5× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">90 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Ciclo</div><div class="mi-val">12 meses</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="sub-card-layout cols2">
+      <div class="prog-card reveal r2">
+        <div class="prog-num">13</div>
+        <div class="prog-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=400&h=400&auto=format&fit=crop" alt="Boxing">
+        </div>
+        <div class="prog-tag-line"><span class="ptag">Boxing</span></div>
+        <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+        <div class="prog-name">Boxe Clássico</div>
+        <p class="prog-desc">Técnica, jab, cruzado, uppercut e esquivas. Do mitts ao ring — boxe autêntico com mestres da modalidade.</p>
+        <div class="prog-meta-row">
+          <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+          <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">60 min</div></div>
+        </div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal r3">
+        <div class="prog-num">14</div>
+        <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=400&h=400&auto=format&fit=crop" alt="Muay Thai">
+      </div>
+        <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar"></div></div></div>
+        <div class="prog-name">Muay Thai</div>
+        <p class="prog-desc">A arte dos 8 membros. Cotovelos, joelhos, chutes e socos com cultura tailandesa genuína.</p>
+        <div class="prog-meta-row">
+          <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+          <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">75 min</div></div>
+        </div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal r4">
+        <div class="prog-num">15</div>
+        <div class="prog-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=400&h=400&auto=format&fit=crop" alt="Jiu-Jitsu">
+        </div>
+        <div class="prog-tag-line"><span class="ptag">Grappling</span></div>
+        <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+        <div class="prog-name">Brazilian Jiu-Jitsu</div>
+        <p class="prog-desc">Técnica de solo, finalizações e controle. BJJ com instrutores faixa preta certificados pela CBJJ.</p>
+        <div class="prog-meta-row">
+          <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">4× / sem</div></div>
+          <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">90 min</div></div>
+        </div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal r5">
+        <div class="prog-num">16</div>
+        <div class="prog-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1552072805-2a9039d00e57?q=80&w=400&h=400&auto=format&fit=crop" alt="Wrestling">
+        </div>
+        <div class="prog-tag-line"><span class="ptag">Tradição</span></div>
+        <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div><div class="int-bar"></div></div></div>
+        <div class="prog-name">Judô & Wrestling</div>
+        <p class="prog-desc">Quedas, arremessos e controle de posição. Judô olímpico e wrestling americano com metodologia de competição.</p>
+        <div class="prog-meta-row">
+          <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+          <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">75 min</div></div>
+        </div>
+        <div class="prog-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 4 — ESPORTES (grid visual)    -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block" id="esportes">
+  <div class="sec-label reveal">04 — Esportes & Modalidades</div>
+  <h2 class="sec-title reveal">CENTRO<br><em>ESPORTIVO</em></h2>
+
+  <div class="sports-grid reveal">
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=200&h=200&auto=format&fit=crop" alt="Basketball">
+      </span>
+      <div class="sport-name">Basketball</div>
+      <div class="sport-sub">Treino técnico & tático</div>
+      <span class="sport-sessions">3× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=200&h=200&auto=format&fit=crop" alt="Football">
+      </span>
+      <div class="sport-name">Futebol Society</div>
+      <div class="sport-sub">Resenha + treino físico</div>
+      <span class="sport-sessions">2× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1592656094267-764a45160876?q=80&w=200&h=200&auto=format&fit=crop" alt="Volleyball">
+      </span>
+      <div class="sport-name">Vôlei</div>
+      <div class="sport-sub">Quadra profissional</div>
+      <span class="sport-sessions">3× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=80&w=200&h=200&auto=format&fit=crop" alt="Tennis">
+      </span>
+      <div class="sport-name">Tênis</div>
+      <div class="sport-sub">Aulas individuais & em grupo</div>
+      <span class="sport-sessions">4× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=200&h=200&auto=format&fit=crop" alt="Swimming">
+      </span>
+      <div class="sport-name">Natação</div>
+      <div class="sport-sub">Piscina olímpica 50m</div>
+      <span class="sport-sessions">Diário</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=200&h=200&auto=format&fit=crop" alt="Ping Pong">
+      </span>
+      <div class="sport-name">Tênis de Mesa</div>
+      <div class="sport-sub">Competição & lazer</div>
+      <span class="sport-sessions">Livre</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=200&h=200&auto=format&fit=crop" alt="Climbing">
+      </span>
+      <div class="sport-name">Escalada</div>
+      <div class="sport-sub">Parede indoor 12m</div>
+      <span class="sport-sessions">Diário</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1599586120429-48281b6f0ece?q=80&w=200&h=200&auto=format&fit=crop" alt="Badminton">
+      </span>
+      <div class="sport-name">Badminton</div>
+      <div class="sport-sub">4 quadras oficiais</div>
+      <span class="sport-sessions">Livre</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1566241134883-13eb2393a3cc?q=80&w=200&h=200&auto=format&fit=crop" alt="Gymnastics">
+      </span>
+      <div class="sport-name">Ginástica</div>
+      <div class="sport-sub">Artística & rítmica</div>
+      <span class="sport-sessions">3× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=200&h=200&auto=format&fit=crop" alt="Archery">
+      </span>
+      <div class="sport-name">Tiro com Arco</div>
+      <div class="sport-sub">Modalidade indoor</div>
+      <span class="sport-sessions">2× / semana</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1547447134-cd3f5c716030?q=80&w=200&h=200&auto=format&fit=crop" alt="Skate">
+      </span>
+      <div class="sport-name">Skate Indoor</div>
+      <div class="sport-sub">Half-pipe & street</div>
+      <span class="sport-sessions">Livre</span>
+    </div>
+    <div class="sport-card">
+      <span class="sport-icon">
+        <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=200&h=200&auto=format&fit=crop" alt="Capoeira">
+      </span>
+      <div class="sport-name">Capoeira</div>
+      <div class="sport-sub">Arte-luta brasileira</div>
+      <span class="sport-sessions">2× / semana</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 5 — FUNCIONAL & PERFORMANCE   -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block section-with-bg" id="funcional">
+  <div class="section-bg-video-container">
+    <video class="section-bg-video" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2016/10/26/5634-184562016_large.mp4" type="video/mp4">
+    </video>
+    <div class="section-bg-overlay"></div>
+  </div>
+  <div class="sec-label reveal">05 — Funcional & Performance Atlética</div>
+  <h2 class="sec-title reveal">LAB<br><em>FUNCIONAL</em></h2>
+
+  <div class="sub-card-layout cols3">
+    <div class="prog-card big reveal r1">
+      <div class="prog-num">17</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&h=400&auto=format&fit=crop" alt="CrossFit">
+      </div>
+      <div class="prog-tag-line"><span class="ptag fire">Top</span><span class="ptag">CrossFit</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div></div></div>
+      <div class="prog-name">CrossFit ACADEMIA OMEGA 3</div>
+      <p class="prog-desc">WODs diários com comunidade e competição. Força, velocidade, resistência e mobilidade em workouts que testam seus limites. Box equipado com todas as ferramentas para o atleta de CrossFit.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">Diária</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">60 min</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Ciclo</div><div class="mi-val">Contínuo</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r2">
+      <div class="prog-num">18</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=400&h=400&auto=format&fit=crop" alt="Calisthenics">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Calistenia</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+      <div class="prog-name">Calisthenics Pro</div>
+      <p class="prog-desc">Muscle-up, planche, front lever — controle total do corpo. Progressões estruturadas do iniciante ao atleta de street workout.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">4× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">75 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r3">
+      <div class="prog-num">19</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=400&h=400&auto=format&fit=crop" alt="Athlete">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Atletas</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div></div></div>
+      <div class="prog-name">Desempenho Atlético</div>
+      <p class="prog-desc">Speed, explosão, agilidade e prevenção. Desenvolvido para atletas de esportes coletivos e individuais que precisam de vantagem competitiva.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">5× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">90 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r1">
+      <div class="prog-num">20</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=400&h=400&auto=format&fit=crop" alt="TRX">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">TRX</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">TRX e Suspensão</div>
+      <p class="prog-desc">Treinamento suspenso com faixas. Ativa o core profundo e desafia o equilíbrio em cada movimento.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">45 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r2">
+      <div class="prog-num">21</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=400&h=400&auto=format&fit=crop" alt="Parkour">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Acrobacia</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Parkour e Freerun</div>
+      <p class="prog-desc">Movimento livre, criatividade e coragem. Treino de parkour com obstáculos indoor desenvolvido por atletas profissionais.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">2× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">90 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r3">
+      <div class="prog-num">22</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=400&h=400&auto=format&fit=crop" alt="Kettlebell">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Kettlebell</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+      <div class="prog-name">Kettlebell Esportivo</div>
+      <p class="prog-desc">Swings, snatches e turkish get-ups. Força resistente e condicionamento com a ferramenta mais versátil do treinamento funcional.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">60 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 6 — AQUÁTICO                  -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block">
+  <div class="sec-label reveal">06 — Treino Aquático</div>
+  <h2 class="sec-title reveal">ZONA<br><em>AQUÁTICA</em></h2>
+
+  <div class="sub-card-layout cols3">
+    <div class="prog-card reveal r1">
+      <div class="prog-num">23</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=400&h=400&auto=format&fit=crop" alt="Swimming">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Natação</span><span class="ptag">Todos os níveis</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Natação Técnica</div>
+      <p class="prog-desc">Crawl, costas, borboleta e peito com análise de técnica subaquática. Piscina olímpica de 50m com 8 raias.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">Diária</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">60 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r2">
+      <div class="prog-num">24</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=400&h=400&auto=format&fit=crop" alt="Aqua Fitness">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Aquatic Fitness</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar"></div><div class="int-bar"></div></div></div>
+      <div class="prog-name">Hidroginástica Pro</div>
+      <p class="prog-desc">Ginástica aquática de alto rendimento. Resistência da água para força e reabilitação — impacto zero nas articulações.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">45 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+    <div class="prog-card reveal r3">
+      <div class="prog-num">25</div>
+      <div class="prog-icon-wrap">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=400&h=400&auto=format&fit=crop" alt="Water Polo">
+      </div>
+      <div class="prog-tag-line"><span class="ptag">Polo Aquático</span></div>
+      <div class="intensity"><span class="int-label">Intensidade</span><div class="int-bars"><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar on"></div><div class="int-bar half"></div></div></div>
+      <div class="prog-name">Polo Aquático</div>
+      <p class="prog-desc">Esporte coletivo de altíssima intensidade na água. Treinos táticos e físicos com ex-atletas da seleção brasileira.</p>
+      <div class="prog-meta-row">
+        <div class="prog-meta-item"><div class="mi-label">Freq.</div><div class="mi-val">3× / sem</div></div>
+        <div class="prog-meta-item"><div class="mi-label">Duração</div><div class="mi-val">90 min</div></div>
+      </div>
+      <div class="prog-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- BLOCO 7 — RECOVERY & WELLNESS       -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block section-with-bg">
+  <div class="section-bg-video-container">
+    <video class="section-bg-video" autoplay loop muted playsinline>
+      <source src="https://cdn.pixabay.com/video/2016/09/21/5453-183424160_large.mp4" type="video/mp4">
+    </video>
+    <div class="section-bg-overlay"></div>
+  </div>
+  <div class="sec-label reveal">07 — Recuperação & Bem-estar</div>
+  <h2 class="sec-title reveal">ZONA<br><em>DE RECUPERAÇÃO</em></h2>
+
+  <div class="recovery-layout">
+    <div class="recovery-card reveal r1">
+      <div class="rc-glow"></div>
+      <div class="rc-num">01</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=400&h=400&auto=format&fit=crop" alt="Cryotherapy">
+      </span>
+      <div class="rc-name">Crioterapia</div>
+      <p class="rc-desc">Câmaras de nitrogênio líquido a -140°C. Recuperação muscular acelerada, redução de inflamação e aumento de produção de colágeno. Utilizada por atletas de elite no mundo todo.</p>
+      <div class="rc-tags"><span class="rc-tag">Pós-treino</span><span class="rc-tag">Anti-inflamatório</span><span class="rc-tag">3 min</span></div>
+    </div>
+    <div class="recovery-card reveal r2">
+      <div class="rc-glow"></div>
+      <div class="rc-num">02</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=400&h=400&auto=format&fit=crop" alt="Sauna">
+      </span>
+      <div class="rc-name">Sauna Infrared</div>
+      <p class="rc-desc">Sauna de infravermelho profundo que penetra 4cm no músculo. Desintoxicação, relaxamento profundo e melhora da circulação sanguínea com temperatura entre 50-60°C.</p>
+      <div class="rc-tags"><span class="rc-tag">Detox</span><span class="rc-tag">Relaxamento</span><span class="rc-tag">30 min</span></div>
+    </div>
+    <div class="recovery-card reveal r3">
+      <div class="rc-glow"></div>
+      <div class="rc-num">03</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=400&h=400&auto=format&fit=crop" alt="Floating">
+      </span>
+      <div class="rc-name">Tanque de Flutuação</div>
+      <p class="rc-desc">Tanque de flutuação com água saturada de sal Epsom. Recuperação completa do sistema nervoso, redução de cortisol e meditação profunda em gravidade zero.</p>
+      <div class="rc-tags"><span class="rc-tag">Mental</span><span class="rc-tag">Sistema Nervoso</span><span class="rc-tag">60 min</span></div>
+    </div>
+    <div class="recovery-card reveal r1">
+      <div class="rc-glow"></div>
+      <div class="rc-num">04</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?q=80&w=400&h=400&auto=format&fit=crop" alt="Massage">
+      </span>
+      <div class="rc-name">Massagem Esportiva</div>
+      <p class="rc-desc">Técnicas de deep tissue, liberação miofascial e drenagem linfática por fisioterapeutas especializados em performance. Agende em qualquer horário.</p>
+      <div class="rc-tags"><span class="rc-tag">Fisioterapia</span><span class="rc-tag">Preventivo</span><span class="rc-tag">60-90 min</span></div>
+    </div>
+    <div class="recovery-card reveal r2">
+      <div class="rc-glow"></div>
+      <div class="rc-num">05</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&h=400&auto=format&fit=crop" alt="EMS">
+      </span>
+      <div class="rc-name">Eletroestimulação</div>
+      <p class="rc-desc">EMS (Electric Muscle Stimulation) para ativação e recuperação. Tecnologia usada em fisioterapia esportiva de alto nível para retorno mais rápido ao treinamento.</p>
+      <div class="rc-tags"><span class="rc-tag">EMS</span><span class="rc-tag">Reabilitação</span><span class="rc-tag">20 min</span></div>
+    </div>
+    <div class="recovery-card reveal r3">
+      <div class="rc-glow"></div>
+      <div class="rc-num">06</div>
+      <span class="rc-icon">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=400&h=400&auto=format&fit=crop" alt="Yoga">
+      </span>
+      <div class="rc-name">Yoga & Mobilidade</div>
+      <p class="rc-desc">Yoga atlético e mobility work baseado em ciência. Para atletas que querem amplitude de movimento, prevenção de lesões e equilíbrio entre corpo e mente.</p>
+      <div class="rc-tags"><span class="rc-tag">Flexibilidade</span><span class="rc-tag">Mindfulness</span><span class="rc-tag">60 min</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ -->
+<!-- TABELA COMPARATIVA                  -->
+<!-- ════════════════════════════════════ -->
+<section class="cat-block">
+  <div class="sec-label reveal">Comparativo</div>
+  <h2 class="sec-title reveal">ENCONTRE<br><em>SEU PROGRAMA</em></h2>
+
+  <div class="compare-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Programa</th>
+          <th>Categoria</th>
+          <th>Nível</th>
+          <th>Freq. Semanal</th>
+          <th>Duração</th>
+          <th class="highlight">Personal Incluso</th>
+          <th class="highlight">Disponível 24h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Powerlifting de Elite</td><td>Força</td><td><span class="level-pill lv-elite">Elite</span></td><td>4×</td><td>90 min</td><td class="check-cell"></td><td class="check-cell"></td></tr>
+        <tr><td>Hipertrofia Pro</td><td>Hipertrofia</td><td><span class="level-pill lv-inter">Intermediário</span></td><td>5×</td><td>75 min</td><td class="check-cell"></td><td class="check-cell"></td></tr>
+        <tr><td>HIIT Extremo</td><td>Cardio</td><td><span class="level-pill lv-begin">Iniciante+</span></td><td>Diária</td><td>45 min</td><td class="cross-cell">—</td><td class="check-cell"></td></tr>
+        <tr><td>CrossFit Academia Omega 3</td><td>Funcional</td><td><span class="level-pill lv-adv">Avançado</span></td><td>Diária</td><td>60 min</td><td class="check-cell"></td><td class="check-cell"></td></tr>
+        <tr><td>MMA Completo</td><td>Luta</td><td><span class="level-pill lv-elite">Elite</span></td><td>5×</td><td>90 min</td><td class="check-cell"></td><td class="cross-cell">—</td></tr>
+        <tr><td>Boxe Clássico</td><td>Luta</td><td><span class="level-pill lv-begin">Iniciante+</span></td><td>3×</td><td>60 min</td><td class="cross-cell">—</td><td class="cross-cell">—</td></tr>
+        <tr><td>Brazilian Jiu-Jitsu</td><td>Luta</td><td><span class="level-pill lv-inter">Intermediário</span></td><td>4×</td><td>90 min</td><td class="check-cell"></td><td class="cross-cell">—</td></tr>
+        <tr><td>Natação Técnica</td><td>Aquático</td><td><span class="level-pill lv-begin">Todos</span></td><td>Diária</td><td>60 min</td><td class="cross-cell">—</td><td class="check-cell"></td></tr>
+        <tr><td>Desempenho Atlético</td><td>Performance</td><td><span class="level-pill lv-adv">Avançado</span></td><td>5×</td><td>90 min</td><td class="check-cell"></td><td class="check-cell"></td></tr>
+        <tr><td>Crioterapia</td><td>Recovery</td><td><span class="level-pill lv-begin">Todos</span></td><td>Livre</td><td>3 min</td><td class="cross-cell">—</td><td class="check-cell"></td></tr>
+        <tr><td>Levantamento Olímpico</td><td>Força</td><td><span class="level-pill lv-elite">Elite</span></td><td>5×</td><td>90 min</td><td class="check-cell"></td><td class="check-cell"></td></tr>
+        <tr><td>Calistenia Pro</td><td>Funcional</td><td><span class="level-pill lv-inter">Intermediário</span></td><td>4×</td><td>75 min</td><td class="cross-cell">—</td><td class="check-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <h2 class="reveal">
+    <span>ESCOLHA SEU</span>
+    <span class="outline">PROGRAMA</span>
+    <span>COMECE HOJE</span>
+  </h2>
+  <p class="reveal">Primeira semana gratuita em qualquer modalidade. Sem burocracia.</p>
+  <a href="#" class="btn-fire reveal">Garantir Vaga Grátis →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">ACADEMIA OMEGA 3</span>
+      <p>Elite Performance Center. Onde atletas são forjados e limites são superados. Venha treinar no melhor.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Academia</h4>
+      <ul>
+        <li><a href="/#academia">Academia</a></li>
+        <li><a href="/programs.html">Programas</a></li>
+        <li><a href="/#treinadores">Treinadores</a></li>
+        <li><a href="/#estrutura">Estrutura</a></li>
+        <li><a href="/#agenda">Agenda</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Planos</h4>
+      <ul>
+        <li><a href="/#plano-starter">Starter</a></li>
+        <li><a href="/#plano-performance">Performance</a></li>
+        <li><a href="/#plano-elite">Elite</a></li>
+        <li><a href="/#contato">Corporativo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col" id="contato">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/academiaomega3" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="#">Localização</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ACADEMIA OMEGA 3. TODOS OS DIREITOS RESERVADOS.</p>
+  </div>
+</footer>
+
+<script>
+// cursor
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+
+// Mobile Menu
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+const links = navLinks.querySelectorAll('a');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+});
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+function loop(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+}
+loop();
+
+// marquee
+const words=['Musculação','HIIT','Powerlifting','CrossFit','MMA','Boxe','Natação','Jiu-Jitsu','Funcional','Crioterapia','Spinning','Calistenia','Yoga','Kettlebell','Muay Thai','Olympic Lifting'];
+const mt=document.getElementById('mtrack');
+if(mt){
+  [...words,...words].forEach(w=>{const s=document.createElement('span');s.className='m-item';s.innerHTML=w+' <span style="opacity:.3"> / </span> ';mt.appendChild(s);});
+}
+
+// filter btns
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// chips hover
+document.querySelectorAll('.chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+  });
+});
+
+// scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) {
+      e.target.classList.add('in');
+      const v = e.target.querySelector('video');
+      if(v) v.play().catch(()=>{});
+    } else {
+      const v = e.target.querySelector('video');
+      if(v) v.pause();
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal, section').forEach(el=>obs.observe(el));
+
+// marquee visibility
+const marqueeObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) mt.style.animationPlayState = 'running';
+    else mt.style.animationPlayState = 'paused';
+  });
+}, { threshold: 0.1 });
+if(mt) marqueeObs.observe(mt);
+</script>
+
+<!-- SMOOTH SCROLL WITH VERTICAL CENTERING -->
+<script>
+(function() {
+  const NAVBAR_HEIGHT = 70; 
+  
+  function smoothScrollToElement(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    
+    const viewportHeight = window.innerHeight;
+    const elementHeight = target.offsetHeight;
+    const elementTop = target.getBoundingClientRect().top + window.scrollY;
+    const availableHeight = viewportHeight - NAVBAR_HEIGHT;
+    
+    let scrollPosition;
+    if (elementHeight < availableHeight) {
+      scrollPosition = elementTop - NAVBAR_HEIGHT - (availableHeight - elementHeight) / 2;
+    } else {
+      scrollPosition = elementTop - NAVBAR_HEIGHT - 20;
+    }
+    
+    window.scrollTo({
+      top: Math.max(0, scrollPosition),
+      behavior: 'smooth'
+    });
+  }
+  
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"], button[onclick*="#"]');
+    if (!link) return;
+    
+    let targetId = null;
+    if (link.tagName === 'A') {
+      const href = link.getAttribute('href');
+      const url = new URL(link.href);
+      if (url.pathname === window.location.pathname && url.hash) {
+        targetId = url.hash.substring(1);
+      } else if (href.startsWith('#')) {
+        targetId = href.substring(1);
+      }
+    } else if (link.tagName === 'BUTTON' && link.getAttribute('onclick')) {
+      const onclick = link.getAttribute('onclick');
+      const match = onclick.match(/#([a-zA-Z0-9_-]+)/);
+      if (match) targetId = match[1];
+    }
+    
+    if (targetId) {
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        smoothScrollToElement(targetId);
+        history.pushState(null, null, '#' + targetId);
+      }
+    }
+  });
+  
+  window.addEventListener('hashchange', function() {
+    const hash = window.location.hash.substring(1);
+    if (hash) setTimeout(() => smoothScrollToElement(hash), 10);
+  });
+  
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    window.addEventListener('load', () => setTimeout(() => smoothScrollToElement(hash), 100));
+  }
+})();
+</script>
+</body>
+</html>
